@@ -1,0 +1,23 @@
+{
+  "name": "ats-lite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Multi-tenant applicant tracking system for small teams — MERN + TypeScript",
+  "workspaces": ["server", "client"],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,web -c blue,magenta \"npm run dev -w server\" \"npm run dev -w client\"",
+    "build": "npm run build -w server && npm run build -w client",
+    "seed": "npm run seed -w server",
+    "test": "npm test -w server",
+    "typecheck": "npm run typecheck -w server && npm run typecheck -w client",
+    "lint": "npm run lint -w server && npm run lint -w client",
+    "format": "npm run format -w server && npm run format -w client"
+  },
+  "devDependencies": {
+    "concurrently": "9.2.4"
+  },
+  "license": "MIT"
+}
