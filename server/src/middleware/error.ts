@@ -1,6 +1,6 @@
 import type { NextFunction, Request, Response } from "express";
-import { MongoServerError } from "mongodb";
-import { Error as MongooseError } from "mongoose";
++import { MulterError } from "multer";
++import mongoose, { Error as MongooseError } from "mongoose";
 import { env } from "../config/env";
 import { AppError } from "../lib/errors";
 
@@ -35,7 +35,14 @@ export function errorHandler(
     return;
   }
 
-  if (error instanceof MongoServerError && error.code === 11000) {
+if (error instanceof MulterError) {
+    const message =
+      error.code === "LIMIT_FILE_SIZE" ? "That file is too large" : "Could not accept that upload";
+    res.status(400).json({ error: { code: "BAD_REQUEST", message } });
+    return;
+  }
+
+  if (error instanceof mongoose.mongo.MongoServerError && error.code === 11000) {
     res.status(409).json({
       error: { code: "CONFLICT", message: "That record already exists" },
     });
