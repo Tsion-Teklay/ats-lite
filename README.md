@@ -1,5 +1,16 @@
 # ATS Lite — multi-tenant applicant tracking for small teams
 
+[![CI](https://github.com/Tsion-Teklay/ats-lite/actions/workflows/ci.yml/badge.svg)](https://github.com/Tsion-Teklay/ats-lite/actions/workflows/ci.yml)
+
+**Live demo:** https://ats-lite-client.vercel.app — sign in as `owner@demo.com` / `demo1234`
+(also `recruiter@demo.com` and `viewer@demo.com`, same password, to see role-based access).
+**Public career page:** https://ats-lite-client.vercel.app/careers/habesha-tech
+
+> The API runs on a free Render instance, so the first request after a period of inactivity can take
+> ~50 seconds to wake up. Reload once if the first sign-in is slow.
+
+![ATS Lite dashboard](docs/dashboard.png)
+
 A hiring tool small companies can actually run: create an organization, post jobs, get a public career
 page, collect applications with résumés, and move candidates through a Kanban pipeline while a
 dashboard summarises how hiring is going.
@@ -32,6 +43,16 @@ MongoDB (documents scoped by organizationId)
 
 Deliberately out of scope (kept as future work rather than half-built): email delivery, payments,
 real-time updates, résumé parsing and AI screening.
+
+## Screens
+
+| Pipeline board | Public career page |
+| --- | --- |
+| ![Candidate pipeline](docs/pipeline.png) | ![Career page](docs/career-page.png) |
+
+Candidate detail with stage history, rating and notes:
+
+![Candidate detail](docs/candidate.png)
 
 ## Demo credentials
 
